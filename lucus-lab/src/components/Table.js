@@ -1,13 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import _ from "lodash";
 
 /** Images Imports */
 import Edit from "../assets/img/edit.png";
 
+/** Modals Imports */
+import EditPostModal from "../modals/EditPostModal";
+
 const pageSize = 10;
 
-const Table = (props) => {
-  const { data, paginated, currentPage } = props;
+const Table = ({ data, paginated, currentPage, onPageClick }) => {
+  const [modal, setModal] = useState(false);
+  const [currPost, setCurrPost] = useState({});
+
+  const toggle = () => {
+    setModal(!modal);
+  };
 
   /** Logic for getting number of Paginated Posts */
   const pageCount = data ? Math.ceil(data.length / pageSize) : 0;
@@ -37,7 +45,14 @@ const Table = (props) => {
                     <td>{post.body}</td>
                     <td>{post.userId}</td>
                     <td>
-                      <button className="edit-btn">
+                      <button
+                        className="edit-btn"
+                        onClick={() => {
+                          setModal(true);
+                          setCurrPost(post);
+                          console.log(currPost);
+                        }}
+                      >
                         <img src={Edit} alt="Edit" />
                       </button>
                     </td>
@@ -60,7 +75,7 @@ const Table = (props) => {
                 <p
                   className="page-link"
                   style={{ cursor: "pointer" }}
-                  onClick={() => props.onPageClick(page)}
+                  onClick={() => onPageClick(page)}
                 >
                   {page}
                 </p>
@@ -69,6 +84,7 @@ const Table = (props) => {
           })}
         </ul>
       </nav>
+      <EditPostModal modal={modal} toggle={toggle} post={currPost} />
     </div>
   );
 };

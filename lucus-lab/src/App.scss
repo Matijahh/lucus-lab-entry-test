@@ -79,7 +79,7 @@
 
 .page-wrapper {
   width: 100%;
-  height: 100vh;
+  min-height: 100vh;
   display: flex;
   background-color: #232931;
 
@@ -99,7 +99,7 @@
 
   .sidebar-wrapper {
     width: 300px;
-    height: 100%;
+    min-height: 100vh;
     background-color: #2d3541;
     display: flex;
     flex-direction: column;
@@ -140,6 +140,19 @@
   }
 }
 
+/* Search Input Styles */
+.search-input-wrapper {
+  width: 100%;
+  text-align: center;
+  position: relative;
+
+  .search-btn {
+    position: absolute;
+    top: 45px !important;
+    right: 0;
+  }
+}
+
 /* Table Styles */
 
 .tbl-wrapper {
@@ -147,10 +160,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 14px;
+  font-size: 13px;
 
   .tbl {
-    margin-top: 50px;
+    margin-top: 30px;
     width: 80%;
     background-color: #eeeeee;
     border-radius: 30px;
@@ -161,7 +174,7 @@
       background-color: #2d3541;
       color: #eeeeee;
       text-align: center;
-      font-size: 14px;
+      font-size: 13px;
       letter-spacing: 1px;
       text-transform: uppercase;
       height: fit-content;
@@ -260,6 +273,138 @@
       width: 230px;
       height: 230px;
       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+/* Modal Styles */
+.modal-content {
+  border-radius: 20px !important;
+
+  .modal-header {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #232931;
+  }
+
+  .form-group {
+    color: #232931;
+    letter-spacing: 1px;
+    label {
+      margin: 10px 0;
+    }
+  }
+
+  .modal-btn {
+    margin-top: 20px;
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    background-color: #232931;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    max-width: 100%;
+    cursor: pointer;
+    height: 30px;
+    padding: 0 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* To Do List Styles */
+.todo-wrapper {
+  display: flex;
+  width: 100%;
+  height: auto;
+  flex-direction: column;
+  align-items: center;
+  padding: 50px;
+
+  .create-task-btn {
+    margin: 20px 0;
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    background-color: #eee;
+    color: #232931;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    max-width: 100%;
+    cursor: pointer;
+    height: 30px;
+    padding: 0 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  .all-todo-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+
+.card-wrapper {
+  width: 270px;
+  height: 200px;
+  margin: 10px 20px;
+  background-color: #eee;
+  border-radius: 0 0 20px 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+
+  .card-top {
+    width: 100%;
+    height: 2%;
+    background-color: #657792;
+  }
+
+  .task-holder {
+    width: 100%;
+    height: 98%;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .card-header {
+      font-weight: bold;
+      background: none;
+      border: none;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .card-desc {
+      padding: 0 15px;
+      letter-spacing: 1px;
+    }
+
+    .card-buttons {
+      position: absolute;
+      display: flex;
+      bottom: 10px;
+      right: 10px;
+
+      .edit-btn {
+        border: none;
+        background: none;
+        img {
+          width: 20px;
+        }
+      }
+
+      .delete-btn {
+        border: none;
+        background: none;
+        img {
+          width: 20px;
+        }
+      }
     }
   }
 }

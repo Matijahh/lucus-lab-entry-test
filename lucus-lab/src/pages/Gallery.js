@@ -2,6 +2,7 @@ import React, { Component } from "react";
 
 /** Components Imports */
 import Sidebar from "../components/Sidebar";
+import SearchInput from "../components/SearchInput";
 
 /** Images Imports */
 import Search from "../assets/img/search.png";
@@ -46,16 +47,12 @@ class Gallery extends Component {
         <div className="page-content">
           <div className="gallery-wrapper">
             <span className="page-title">Gallery</span>
-            <input
-              className="input-field"
-              type="text"
+            <SearchInput
               name="photo"
               placeholder="Search for Photos..."
               onChange={this.handleChange}
+              onClick={this.handleClick}
             />
-            <button className="search-btn" onClick={this.handleClick}>
-              <img src={Search} alt="Search" />
-            </button>
             <div className="images-wrapper">
               {this.state.results.map((photo) => {
                 return (

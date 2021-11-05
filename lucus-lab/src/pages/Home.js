@@ -4,6 +4,7 @@ import _ from "lodash";
 /** Components Imports */
 import Sidebar from "../components/Sidebar";
 import Table from "../components/Table";
+import SearchInput from "../components/SearchInput";
 
 class Home extends Component {
   constructor(props) {
@@ -45,12 +46,20 @@ class Home extends Component {
       <div className="page-wrapper">
         <Sidebar />
         <div className="page-content">
-          <Table
-            data={this.state.results}
-            paginated={this.state.paginated}
-            currentPage={this.state.currentPage}
-            onPageClick={this.handlePageClick}
-          />
+          <div className="gallery-wrapper">
+            {" "}
+            <SearchInput
+              name="post"
+              placeholder="Search for Posts..."
+              onChange={this.handleChange}
+            />
+            <Table
+              data={this.state.results}
+              paginated={this.state.paginated}
+              currentPage={this.state.currentPage}
+              onPageClick={this.handlePageClick}
+            />{" "}
+          </div>
         </div>
       </div>
     );
