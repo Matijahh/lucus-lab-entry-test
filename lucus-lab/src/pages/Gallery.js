@@ -53,7 +53,7 @@ class Gallery extends Component {
             <div className="images-wrapper">
               {this.state.results.map((photo) => {
                 return (
-                  <img src={photo.urls && photo.urls.regular} alt="Smth" />
+                  <img src={photo.urls && photo.urls.regular} alt="Gallery" />
                 );
               })}
             </div>
