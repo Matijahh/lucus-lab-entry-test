@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import auth from "../auth";
+import { connect } from "react-redux";
+import { loginUser } from "../store/actions";
 
 /** Images Imports */
 import Logo from "../assets/img/logo.png";
@@ -25,19 +27,17 @@ class Login extends Component {
       let obj = JSON.parse(authLocal);
       this.setState({ authLocal: obj });
     }
+    this.props.loginUser(authLocal);
   }
 
   login(e) {
     e.preventDefault();
     auth.login(() => {
-      if (
-        this.state.email === this.state.authLocal.email &&
-        this.state.pass === this.state.authLocal.pass
-      ) {
-        this.props.history.push("/home");
-      } else {
-        this.setState({ error: "Wrong Email or Password" });
-      }
+      this.props.loginUser(
+        this.state.email,
+        this.state.pass,
+        this.props.history
+      );
     });
   }
 
@@ -88,4 +88,8 @@ class Login extends Component {
   }
 }
 
-export default Login;
+const mapStateToProps = (state) => {
+  return { user: state.Login.user };
+};
+
+export default connect(mapStateToProps, { loginUser })(Login);

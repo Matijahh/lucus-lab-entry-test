@@ -6,17 +6,17 @@ import {
   LOGOUT_USER_SUCCESS,
 } from "./actionTypes";
 
-export const loginUser = (form) => {
+export const loginUser = (email, pass, history) => {
   return {
     type: LOGIN_USER,
-    payload: form,
+    payload: { email, pass, history },
   };
 };
 
-export const loginUserSuccess = (user) => {
+export const loginUserSuccess = (message) => {
   return {
     type: LOGIN_USER_SUCCESS,
-    payload: user,
+    payload: message,
   };
 };
 

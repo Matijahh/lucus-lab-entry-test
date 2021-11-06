@@ -7,8 +7,8 @@ import {
 } from "./actionTypes";
 
 const initialState = {
-  error: "",
   user: null,
+  error: "",
 };
 
 const login = (state = initialState, action) => {
@@ -16,14 +16,12 @@ const login = (state = initialState, action) => {
     case LOGIN_USER:
       state = {
         ...state,
-        error: "",
       };
       break;
     case LOGIN_USER_SUCCESS:
       state = {
         ...state,
         user: action.payload,
-        error: "",
       };
       break;
     case LOGIN_USER_ERROR:
@@ -48,6 +46,7 @@ const login = (state = initialState, action) => {
       };
       break;
   }
+  return state;
 };
 
 export default login;
