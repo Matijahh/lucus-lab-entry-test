@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { Routes, BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { ProtectedRoute } from "./protected.route";
 
 /** Style Imports */
 import "./App.scss";
@@ -14,12 +15,12 @@ class App extends Component {
   render() {
     return (
       <BrowserRouter>
-        <Routes>
-          <Route path="/" exact element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/gallery" element={<Gallery />} />
-          <Route path="/todo" element={<ToDoList />} />
-        </Routes>
+        <Switch>
+          <Route path="/" exact component={Login} />
+          <ProtectedRoute path="/home" component={Home} />
+          <ProtectedRoute path="/gallery" component={Gallery} />
+          <ProtectedRoute path="/todo" component={ToDoList} />
+        </Switch>
       </BrowserRouter>
     );
   }

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import _ from "lodash";
 
 /** Images Imports */
@@ -48,9 +48,8 @@ const Table = ({ data, paginated, currentPage, onPageClick }) => {
                       <button
                         className="edit-btn"
                         onClick={() => {
-                          setModal(true);
                           setCurrPost(post);
-                          console.log(currPost);
+                          setModal(true);
                         }}
                       >
                         <img src={Edit} alt="Edit" />

@@ -3,12 +3,12 @@ import React from "react";
 /** Images Imports */
 import Search from "../assets/img/search.png";
 
-const SearchInput = ({ photo, placeholder, onChange, onClick }) => {
+const SearchInput = ({ photo, placeholder, onChange, onClick, numeric }) => {
   return (
     <div className="search-input-wrapper">
       <input
         className="input-field"
-        type="text"
+        type={numeric ? "number" : "text"}
         name={photo}
         placeholder={placeholder}
         onChange={onChange}

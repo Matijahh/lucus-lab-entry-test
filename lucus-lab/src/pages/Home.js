@@ -50,8 +50,9 @@ class Home extends Component {
             {" "}
             <SearchInput
               name="post"
-              placeholder="Search for Posts..."
-              onChange={this.handleChange}
+              numeric
+              placeholder="Search for Post [Type User ID]"
+              onChange={() => {}}
             />
             <Table
               data={this.state.results}

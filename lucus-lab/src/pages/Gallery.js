@@ -4,9 +4,6 @@ import React, { Component } from "react";
 import Sidebar from "../components/Sidebar";
 import SearchInput from "../components/SearchInput";
 
-/** Images Imports */
-import Search from "../assets/img/search.png";
-
 class Gallery extends Component {
   constructor(props) {
     super(props);
