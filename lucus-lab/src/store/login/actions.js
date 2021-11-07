@@ -26,17 +26,3 @@ export const loginUserError = (error) => {
     payload: error,
   };
 };
-
-export const logoutUser = () => {
-  return {
-    type: LOGOUT_USER,
-    payload: {},
-  };
-};
-
-export const logoutUserSuccess = () => {
-  return {
-    type: LOGOUT_USER_SUCCESS,
-    payload: {},
-  };
-};

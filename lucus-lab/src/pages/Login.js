@@ -13,21 +13,9 @@ class Login extends Component {
       auth: false,
       email: "",
       pass: "",
-      authLocal: {},
-      error: "",
     };
     this.login = this.login.bind(this);
     this.handleChange = this.handleChange.bind(this);
-  }
-
-  componentDidMount() {
-    // In Local Storage Create Email and Pass
-    let authLocal = localStorage.getItem("authLucusLab");
-    if (authLocal) {
-      let obj = JSON.parse(authLocal);
-      this.setState({ authLocal: obj });
-    }
-    this.props.loginUser(authLocal);
   }
 
   login(e) {
@@ -77,7 +65,9 @@ class Login extends Component {
               type="password"
               onChange={this.handleChange}
             />
-            <span className="login-error">{this.state.error}</span>
+            {this.props.error && (
+              <span className="login-error">{this.props.error.error}</span>
+            )}
             <button className="login-btn" onClick={this.login}>
               Sign in
             </button>
@@ -89,7 +79,7 @@ class Login extends Component {
 }
 
 const mapStateToProps = (state) => {
-  return { user: state.Login.user };
+  return { error: state.Login.error };
 };
 
 export default connect(mapStateToProps, { loginUser })(Login);

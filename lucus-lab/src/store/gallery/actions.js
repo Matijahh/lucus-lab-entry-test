@@ -10,10 +10,10 @@ export const searchGallery = (query) => {
     payload: { query },
   };
 };
-export const searchGallerySuccess = (query) => {
+export const searchGallerySuccess = (photos) => {
   return {
     type: SEARCH_GALLERY_SUCCESS,
-    payload: query,
+    payload: { photos },
   };
 };
 export const searchGalleryError = (error) => {

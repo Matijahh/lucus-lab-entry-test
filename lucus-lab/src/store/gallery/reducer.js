@@ -6,7 +6,7 @@ import {
 
 const initialState = {
   error: "",
-  query: "",
+  photos: null,
 };
 
 const gallery = (state = initialState, action) => {
@@ -19,7 +19,7 @@ const gallery = (state = initialState, action) => {
     case SEARCH_GALLERY_SUCCESS:
       state = {
         ...state,
-        query: action.payload,
+        photos: action.payload,
       };
       break;
     case SEARCH_GALLERY_ERROR:

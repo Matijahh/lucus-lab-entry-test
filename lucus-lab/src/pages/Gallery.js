@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { searchGallery } from "../store/actions";
 
 /** Components Imports */
 import Sidebar from "../components/Sidebar";
@@ -8,36 +10,29 @@ class Gallery extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      photo: "programming",
-      results: [],
-      clientId: "Lv8Olhsa28dAqyYSnazjV3BnI8nvSBbT0s7qO7qvlF4",
+      query: "programming",
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleClick = this.handleClick.bind(this);
   }
 
   componentDidMount() {
-    const wrapper = async () => {
-      const url = `https://api.unsplash.com/search/photos?page=1&query=${this.state.photo}&client_id=${this.state.clientId}`;
-      const res = await fetch(url);
-      const fetchRes = await res.json();
-      this.setState({ results: fetchRes.results });
-    };
-    wrapper();
+    this.props.searchGallery(this.state.query);
   }
 
   handleChange(e) {
-    this.setState({ photo: e.target.value });
+    this.setState({ query: e.target.value });
   }
 
-  async handleClick(e) {
-    const url = `https://api.unsplash.com/search/photos?page=1&query=${this.state.photo}&client_id=${this.state.clientId}`;
-    const res = await fetch(url);
-    const fetchRes = await res.json();
-    this.setState({ results: fetchRes.results });
+  handleClick() {
+    this.props.searchGallery(this.state.query);
   }
 
   render() {
+    const photos =
+      this.props.photos &&
+      this.props.photos.photos &&
+      this.props.photos.photos.photos;
     return (
       <div className="page-wrapper">
         <Sidebar />
@@ -50,13 +45,15 @@ class Gallery extends Component {
               onChange={this.handleChange}
               onClick={this.handleClick}
             />
-            <div className="images-wrapper">
-              {this.state.results.map((photo) => {
-                return (
-                  <img src={photo.urls && photo.urls.regular} alt="Gallery" />
-                );
-              })}
-            </div>
+            {photos && (
+              <div className="images-wrapper">
+                {photos.map((photo) => {
+                  return (
+                    <img src={photo.urls && photo.urls.regular} alt="Gallery" />
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -64,4 +61,8 @@ class Gallery extends Component {
   }
 }
 
-export default Gallery;
+const mapStateToProps = (state) => {
+  return { photos: state.Gallery.photos };
+};
+
+export default connect(mapStateToProps, { searchGallery })(Gallery);

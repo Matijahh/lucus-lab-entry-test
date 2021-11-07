@@ -2,8 +2,6 @@ import {
   LOGIN_USER,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_ERROR,
-  LOGOUT_USER,
-  LOGOUT_USER_SUCCESS,
 } from "./actionTypes";
 
 const initialState = {
@@ -28,16 +26,6 @@ const login = (state = initialState, action) => {
       state = {
         ...state,
         error: action.payload,
-      };
-      break;
-    case LOGOUT_USER:
-      state = {
-        ...state,
-      };
-      break;
-    case LOGOUT_USER_SUCCESS:
-      state = {
-        ...state,
       };
       break;
     default:

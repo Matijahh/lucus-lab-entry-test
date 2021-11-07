@@ -54,7 +54,6 @@ class ToDoList extends Component {
     tempList[index] = obj;
     localStorage.setItem("taskList", JSON.stringify(tempList));
     this.setState({ taskList: tempList });
-    window.location.reload(false);
   }
 
   render() {

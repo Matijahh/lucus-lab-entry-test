@@ -1,4 +1,4 @@
-import { takeEvery, fork, put, all, call } from "redux-saga/effects";
+import { takeEvery, fork, put, all } from "redux-saga/effects";
 
 // Login Redux States
 import { LOGIN_USER } from "./actionTypes";
@@ -6,6 +6,7 @@ import { loginUserSuccess, loginUserError } from "./actions";
 
 export function* loginUser({ payload }) {
   try {
+    // In Local Storage Create Some Credentials for Authentication
     const response = localStorage.getItem("authLucusLab");
     const resObj = JSON.parse(response);
     if (resObj) {
