@@ -1,10 +1,13 @@
 import React from "react";
 
-const SelectField = ({ options, label }) => {
+const SelectField = ({ options, label, handleChange }) => {
   return (
     <div className="select-field-wrapper">
       <label>{label}</label>
-      <select name="select">
+      <select name="select" onChange={handleChange}>
+        <option value="" selected disabled hidden>
+          Select User ID
+        </option>
         {options &&
           options.map((option, key) => {
             return (

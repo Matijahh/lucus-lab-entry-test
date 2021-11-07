@@ -9,7 +9,7 @@ import EditPostModal from "../modals/EditPostModal";
 
 const pageSize = 10;
 
-const Table = ({ data, paginated, currentPage, onPageClick }) => {
+const Table = ({ data, paginated, currentPage, onPageClick, isFiltered }) => {
   const [modal, setModal] = useState(false);
   const [currPost, setCurrPost] = useState({});
 
@@ -62,28 +62,30 @@ const Table = ({ data, paginated, currentPage, onPageClick }) => {
           </table>
         </div>
       )}
-      <nav className="pagination-container">
-        <ul className="pagination">
-          {pages.map((page, key) => {
-            return (
-              <li
-                key={key}
-                className={
-                  page === currentPage ? "page-item active" : "page-item"
-                }
-              >
-                <p
-                  className="page-link"
-                  style={{ cursor: "pointer" }}
-                  onClick={() => onPageClick(page)}
+      {!isFiltered && (
+        <nav className="pagination-container">
+          <ul className="pagination">
+            {pages.map((page, key) => {
+              return (
+                <li
+                  key={key}
+                  className={
+                    page === currentPage ? "page-item active" : "page-item"
+                  }
                 >
-                  {page}
-                </p>
-              </li>
-            );
-          })}
-        </ul>
-      </nav>
+                  <p
+                    className="page-link"
+                    style={{ cursor: "pointer" }}
+                    onClick={() => onPageClick(page)}
+                  >
+                    {page}
+                  </p>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      )}
       <EditPostModal modal={modal} toggle={toggle} post={currPost} />
     </div>
   );

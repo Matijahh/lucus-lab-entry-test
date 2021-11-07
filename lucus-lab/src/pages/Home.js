@@ -16,6 +16,8 @@ class Home extends Component {
     this.state = {
       paginated: [],
       currentPage: 1,
+      filter: null,
+      filtered: [],
     };
     this.handlePageClick = this.handlePageClick.bind(this);
   }
@@ -32,7 +34,7 @@ class Home extends Component {
     const pageSize = 10;
     this.setState({ currentPage: pageNum });
     const startIndex = (pageNum - 1) * pageSize;
-    const paginatedPost = _(this.state.results)
+    const paginatedPost = _(this.props.posts)
       .slice(startIndex)
       .take(pageSize)
       .value();
@@ -40,6 +42,18 @@ class Home extends Component {
   }
 
   render() {
+    const options = [
+      { value: 1, name: 1 },
+      { value: 2, name: 2 },
+      { value: 3, name: 3 },
+      { value: 4, name: 4 },
+      { value: 5, name: 5 },
+      { value: 6, name: 6 },
+      { value: 7, name: 7 },
+      { value: 8, name: 8 },
+      { value: 9, name: 9 },
+      { value: 10, name: 10 },
+    ];
     return (
       <div className="page-wrapper">
         <Sidebar />
@@ -48,20 +62,22 @@ class Home extends Component {
             {" "}
             <SelectField
               label="Search by User ID"
-              options={[
-                { value: 1, name: 1 },
-                { value: 2, name: 2 },
-                { value: 3, name: 3 },
-                { value: 4, name: 4 },
-                { value: 5, name: 5 },
-                { value: 6, name: 6 },
-                { value: 7, name: 7 },
-              ]}
+              options={options}
+              handleChange={(e) => {
+                this.setState({ filter: e.target.value });
+              }}
             />
             {this.props.posts && (
               <Table
+                isFiltered={this.state.filter ? true : false}
                 data={this.props.posts}
-                paginated={this.state.paginated}
+                paginated={
+                  this.state.filter
+                    ? this.props.posts.filter((post) => {
+                        return post.userId === parseInt(this.state.filter);
+                      })
+                    : this.state.paginated
+                }
                 currentPage={this.state.currentPage}
                 onPageClick={this.handlePageClick}
               />
