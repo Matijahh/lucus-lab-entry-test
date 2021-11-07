@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+import { createTodo, getTodos, updateTodo, deleteTodo } from "../store/actions";
 
 /** Components Imports */
 import Sidebar from "../components/Sidebar";
@@ -21,12 +23,7 @@ class ToDoList extends Component {
   }
 
   componentDidMount() {
-    let arr = localStorage.getItem("taskList");
-
-    if (arr) {
-      let obj = JSON.parse(arr);
-      this.setState({ taskList: obj });
-    }
+    this.props.getTodos();
   }
 
   toggle() {
@@ -36,24 +33,15 @@ class ToDoList extends Component {
   }
 
   saveTask(taskObj) {
-    let tempList = this.state.taskList;
-    tempList.push(taskObj);
-    localStorage.setItem("taskList", JSON.stringify(tempList));
-    this.setState({ taskList: tempList });
+    this.props.createTodo(taskObj);
   }
 
   deleteTask(index) {
-    let tempList = this.state.taskList;
-    tempList.splice(index, 1);
-    localStorage.setItem("taskList", JSON.stringify(tempList));
-    this.setState({ taskList: tempList });
+    this.props.deleteTodo(index);
   }
 
   updateListArray(obj, index) {
-    let tempList = this.state.taskList;
-    tempList[index] = obj;
-    localStorage.setItem("taskList", JSON.stringify(tempList));
-    this.setState({ taskList: tempList });
+    this.props.updateTodo(obj, index);
   }
 
   render() {
@@ -70,16 +58,17 @@ class ToDoList extends Component {
               Create Task
             </button>
             <div className="all-todo-container">
-              {this.state.taskList.map((task, index) => {
-                return (
-                  <Card
-                    task={task}
-                    index={index}
-                    deleteTask={this.deleteTask}
-                    updateListArray={this.updateListArray}
-                  />
-                );
-              })}
+              {this.props.todo &&
+                this.props.todo.map((task, index) => {
+                  return (
+                    <Card
+                      task={task}
+                      index={index}
+                      deleteTask={this.deleteTask}
+                      updateListArray={this.updateListArray}
+                    />
+                  );
+                })}
             </div>
             <CreateToDoModal
               toggle={this.toggle}
@@ -93,4 +82,13 @@ class ToDoList extends Component {
   }
 }
 
-export default ToDoList;
+const mapStateToProps = (state) => {
+  return { todo: state.Todo.todo };
+};
+
+export default connect(mapStateToProps, {
+  createTodo,
+  getTodos,
+  updateTodo,
+  deleteTodo,
+})(ToDoList);

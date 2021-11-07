@@ -1,4 +1,7 @@
 import {
+  GET_TODOS,
+  GET_TODOS_SUCCESS,
+  GET_TODOS_ERROR,
   CREATE_TODO,
   CREATE_TODO_SUCCESS,
   CREATE_TODO_ERROR,
@@ -10,6 +13,27 @@ import {
   DELETE_TODO_ERROR,
 } from "./actionTypes";
 
+export const getTodos = () => {
+  return {
+    type: GET_TODOS,
+    payload: {},
+  };
+};
+
+export const getTodosSuccess = (todo) => {
+  return {
+    type: GET_TODOS_SUCCESS,
+    payload: todo,
+  };
+};
+
+export const getTodosError = (error) => {
+  return {
+    type: GET_TODOS_ERROR,
+    payload: error,
+  };
+};
+
 export const createTodo = (data) => {
   return {
     type: CREATE_TODO,
@@ -17,10 +41,10 @@ export const createTodo = (data) => {
   };
 };
 
-export const createTodoSuccess = (message) => {
+export const createTodoSuccess = (todo) => {
   return {
     type: CREATE_TODO_SUCCESS,
-    payload: message,
+    payload: todo,
   };
 };
 
@@ -34,14 +58,14 @@ export const createTodoError = (error) => {
 export const updateTodo = (data, id) => {
   return {
     type: UPDATE_TODO,
-    payload: data,
+    payload: { data, id },
   };
 };
 
-export const updateTodoSuccess = (message) => {
+export const updateTodoSuccess = (todo) => {
   return {
     type: UPDATE_TODO_SUCCESS,
-    payload: message,
+    payload: todo,
   };
 };
 
@@ -59,10 +83,10 @@ export const deleteTodo = (id) => {
   };
 };
 
-export const deleteTodoSuccess = (message) => {
+export const deleteTodoSuccess = (todo) => {
   return {
     type: DELETE_TODO_SUCCESS,
-    payload: message,
+    payload: todo,
   };
 };
 
