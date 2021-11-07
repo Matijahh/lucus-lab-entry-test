@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import _ from "lodash";
+import { connect } from "react-redux";
+import { getPosts } from "../store/actions";
 
 /** Components Imports */
 import Sidebar from "../components/Sidebar";
@@ -14,20 +16,16 @@ class Home extends Component {
       paginated: [],
       currentPage: 1,
     };
-    this.fetchData = this.fetchData.bind(this);
     this.handlePageClick = this.handlePageClick.bind(this);
   }
 
   componentDidMount() {
-    this.fetchData();
-  }
-
-  async fetchData() {
     const pageSize = 10;
-    const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-    const fetchRes = await res.json();
-    this.setState({ results: fetchRes });
-    this.setState({ paginated: _(fetchRes).slice(0).take(pageSize).value() });
+    this.props.getPosts();
+    this.setState({ results: this.props.posts });
+    this.setState({
+      paginated: _(this.props.posts).slice(0).take(pageSize).value(),
+    });
   }
 
   handlePageClick(pageNum) {
@@ -67,4 +65,8 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  return { posts: state.Posts.posts };
+};
+
+export default connect(mapStateToProps, { getPosts })(Home);
