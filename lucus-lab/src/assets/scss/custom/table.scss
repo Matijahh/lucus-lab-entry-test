@@ -1,0 +1,71 @@
+.tbl-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 13px;
+
+  .tbl {
+    margin-top: 30px;
+    width: 80%;
+    background-color: #eeeeee;
+    border-radius: 30px;
+    border: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    .tbl-head {
+      background-color: #2d3541;
+      color: #eeeeee;
+      text-align: center;
+      font-size: 13px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      height: fit-content;
+      border-color: #232931;
+
+      th:nth-child(1) {
+        border-radius: 20px 0 0 0;
+        width: 260px;
+      }
+
+      th:nth-child(3) {
+        width: 100px;
+      }
+
+      th:nth-child(4) {
+        border-radius: 0 20px 0 0;
+        width: 100px;
+      }
+    }
+
+    .tbl-body {
+      td {
+        border-color: #232931;
+        text-align: center;
+      }
+
+      .edit-btn {
+        border: none;
+        cursor: pointer;
+
+        img {
+          width: 30px;
+        }
+      }
+    }
+  }
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+
+  .pagination {
+    position: absolute;
+    bottom: 0;
+
+    .page-link {
+      padding: 10px 20px;
+    }
+  }
+}

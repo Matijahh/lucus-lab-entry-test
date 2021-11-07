@@ -1,0 +1,22 @@
+.select-field-wrapper {
+  width: 100%;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  label {
+    font-size: 12px;
+    letter-spacing: 1px;
+    color: #fff;
+    padding: 10px 0;
+  }
+  select {
+    width: 500px;
+    outline: none;
+    height: 30px;
+    border: none;
+    border-radius: 30px;
+    padding: 0 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}

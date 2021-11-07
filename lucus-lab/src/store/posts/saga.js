@@ -16,9 +16,7 @@ export function* getPosts() {
   try {
     const response = yield call(fetchPosts);
     if (response) {
-      yield put(getPostsSuccess(response));
-    } else {
-      yield put(getPostsError("Something went Wrong"));
+      yield put(getPostsSuccess({ posts: response && response }));
     }
   } catch (error) {
     yield put(getPostsError(error));

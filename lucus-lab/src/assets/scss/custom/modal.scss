@@ -1,0 +1,35 @@
+.modal-content {
+  border-radius: 20px !important;
+
+  .modal-header {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: #232931;
+  }
+
+  .form-group {
+    color: #232931;
+    letter-spacing: 1px;
+    label {
+      margin: 10px 0;
+    }
+  }
+
+  .modal-btn {
+    margin-top: 20px;
+    border-radius: 15px;
+    outline: none;
+    border: none;
+    background-color: #232931;
+    color: #fff;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    max-width: 100%;
+    cursor: pointer;
+    height: 30px;
+    padding: 0 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+}

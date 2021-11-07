@@ -1,9 +1,10 @@
 import React, { Component } from "react";
+
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { ProtectedRoute } from "./protected.route";
 
 /** Style Imports */
-import "./App.scss";
+import "./assets/scss/app.scss";
 
 /** Pages Imports */
 import Login from "./pages/Login";

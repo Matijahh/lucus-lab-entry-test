@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+
+/** Redux Imports */
 import { connect } from "react-redux";
 import { searchGallery } from "../store/actions";
 
@@ -47,9 +49,13 @@ class Gallery extends Component {
             />
             {photos && (
               <div className="images-wrapper">
-                {photos.map((photo) => {
+                {photos.map((photo, key) => {
                   return (
-                    <img src={photo.urls && photo.urls.regular} alt="Gallery" />
+                    <img
+                      key={key}
+                      src={photo.urls && photo.urls.regular}
+                      alt="Gallery"
+                    />
                   );
                 })}
               </div>

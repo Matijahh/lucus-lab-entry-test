@@ -1,12 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
+
+/** Custom JS Files Imports */
 import auth from "../auth";
 import history from "../history";
 
 /** Images Imports */
 import Logo from "../assets/img/logo.png";
 
-const Sidebar = (props) => {
+const Sidebar = () => {
   return (
     <div className="sidebar-wrapper">
       <div className="image-wrapper">

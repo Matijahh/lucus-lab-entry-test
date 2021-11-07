@@ -2,8 +2,6 @@ import {
   LOGIN_USER,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_ERROR,
-  LOGOUT_USER,
-  LOGOUT_USER_SUCCESS,
 } from "./actionTypes";
 
 export const loginUser = (email, pass, history) => {

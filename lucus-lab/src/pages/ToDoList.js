@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+
+/** Redux Imports */
 import { connect } from "react-redux";
 import { createTodo, getTodos, updateTodo, deleteTodo } from "../store/actions";
 
@@ -63,6 +65,7 @@ class ToDoList extends Component {
                   return (
                     <Card
                       task={task}
+                      key={index}
                       index={index}
                       deleteTask={this.deleteTask}
                       updateListArray={this.updateListArray}

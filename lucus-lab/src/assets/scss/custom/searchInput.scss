@@ -1,0 +1,11 @@
+.search-input-wrapper {
+  width: 100%;
+  text-align: center;
+  position: relative;
+
+  .search-btn {
+    position: absolute;
+    top: 45px !important;
+    right: 0;
+  }
+}

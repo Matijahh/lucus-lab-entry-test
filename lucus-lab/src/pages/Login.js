@@ -1,5 +1,9 @@
 import React, { Component } from "react";
+
+/** Custom JS Files Imports */
 import auth from "../auth";
+
+/** Redux Imports */
 import { connect } from "react-redux";
 import { loginUser } from "../store/actions";
 

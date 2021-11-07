@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import _ from "lodash";
 
 /** Images Imports */
@@ -64,9 +64,10 @@ const Table = ({ data, paginated, currentPage, onPageClick }) => {
       )}
       <nav className="pagination-container">
         <ul className="pagination">
-          {pages.map((page) => {
+          {pages.map((page, key) => {
             return (
               <li
+                key={key}
                 className={
                   page === currentPage ? "page-item active" : "page-item"
                 }
